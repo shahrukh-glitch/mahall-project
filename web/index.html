@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Python App</title>
+    <link rel="stylesheet" href="web/style.css">
+</head>
+<body>
+    <a href="web/marrReg.html">
+        <button>Open Registration Form</button>
+    </a>
+    <a href="web/search.html">
+        <button>Search Registration</button>
+    </a>
+    <a href="/view">
+    <button>View All Registrations</button>
+    </a>
+    <a href="/member_registration">
+    <button>Member Registration</button>
+    </a>
+    <div class="container">
+        <h1>Python + Web UI Desktop App</h1>
+        <p>Backend: Python | Frontend: HTML + CSS + JavaScript</p>
+        
+        <div class="card">
+            <h2>Call Python Backend</h2>
+            <input type="text" id="nameInput" placeholder="Enter your name" value="User">
+            <button onclick="callHello()">Send to Python</button>
+            <p id="result" class="result"></p>
+        </div>
+
+        <div class="card">
+            <h2>Math Example (Python does the calculation)</h2>
+            <input type="number" id="num1" placeholder="Number 1" value="15">
+            <input type="number" id="num2" placeholder="Number 2" value="27">
+            <button onclick="addNumbers()">Add Numbers</button>
+            <p id="mathResult" class="result"></p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

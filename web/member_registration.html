@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Member Registration</title>
+
+    <link rel="stylesheet" href="/web/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Member Registration Form</h1>
+
+    <form id="memberForm">
+
+        <!-- ============================= -->
+        <!-- Registration Details -->
+        <!-- ============================= -->
+
+        <div class="card">
+
+            <h2>Registration Details</h2>
+
+            <div class="row">
+
+                <div class="form-group">
+
+                    <label>Registration Number</label>
+
+                    <input
+                        type="text"
+                        name="registration_number"
+                        required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Mahallu</label>
+
+                    <input
+                        type="text"
+                        name="mahallu">
+
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+                <div class="form-group">
+
+                    <label>Ward</label>
+
+                    <input
+                        type="text"
+                        name="ward">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>House Number</label>
+
+                    <input
+                        type="text"
+                        name="house_number">
+
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+                <div class="form-group">
+
+                    <label>Family Number</label>
+
+                    <input
+                        type="text"
+                        name="family_number">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Registration Date</label>
+
+                    <input
+                        type="date"
+                        name="registration_date">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ============================= -->
+        <!-- Family Head Details -->
+        <!-- ============================= -->
+
+        <div class="card">
+
+            <h2>Family Head Details</h2>
+
+            <div class="row">
+
+                <div class="form-group">
+
+                    <label>Family Head Name</label>
+
+                    <input
+                        type="text"
+                        name="family_head">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Father Name</label>
+
+                    <input
+                        type="text"
+                        name="father_name">
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="form-group">
+
+                    <label>House Name</label>
+
+                    <input
+                        type="text"
+                        name="house_name">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Phone Number</label>
+
+                    <input
+                        type="text"
+                        name="phone">
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="form-group full-width">
+
+                    <label>Address</label>
+
+                    <textarea
+                        name="address"
+                        rows="4"></textarea>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ============================= -->
+        <!-- Buttons -->
+        <!-- ============================= -->
+
+        <div class="button-group">
+
+            <button type="submit">
+
+                Save & Continue
+
+            </button>
+
+            <button type="reset">
+
+                Clear
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+<script src="/web/member_registration.js"></script>
+
+</body>
+
+</html>

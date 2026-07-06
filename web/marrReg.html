@@ -1,0 +1,120 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marriage Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Marriage Registration Form</h1>
+
+<form>
+
+    <h2>Registration Details</h2>
+
+    <label>Registration Number:</label><br>
+    <input type="text" name="reg_no"><br><br>
+
+    <label>Mahallu Name:</label><br>
+    <input type="text" name="mahallu_name"><br><br>
+
+    <h2>Groom Details</h2>
+
+    <label>First Name:</label><br>
+    <input type="text" id="groomfname" name="groom_fname"><br><br>
+
+    <label>Last Name:</label><br>
+    <input type="text" id="groomlname" name="groom_lname"><br><br>
+
+    <label>Aadhaar Number:</label><br>
+    <input type="text" id="groomadhar" name="groom_aadhaar"><br><br>
+
+    <label>Mobile Number:</label><br>
+    <input type="tel" id="groom_mobile" name="groom_mobile"><br><br>
+
+    <label>Date of Birth:</label><br>
+    <input type="date" id="groomdob" name="groom_dob"><br><br>
+
+    <label>Address:</label><br>
+    <textarea name="groom_address"></textarea><br><br>
+
+    <label>Photo:</label><br>
+    <input type="file" name="groom_photo"><br><br>
+
+    <h2>Bride Details</h2>
+
+    <label>First Name:</label><br>
+    <input type="text" name="bride_fname"><br><br>
+
+    <label>Last Name:</label><br>
+    <input type="text" id="bridelname" name="bride_lname"><br><br>
+
+    <label>Aadhaar Number:</label><br>
+    <input type="text" id="brideaadhaar" name="bride_aadhaar"><br><br>
+
+    <label>Mobile Number:</label><br>
+    <input type="tel" id="bridemobile" name="bride_mobile"><br><br>
+
+    <label>Date of Birth:</label><br>
+    <input type="date" id="bridedob" name="bride_dob"><br><br>
+
+    <label>Address:</label><br>
+    <textarea name="bride_address"></textarea><br><br>
+
+    <label>Photo:</label><br>
+    <input type="file" name="bride_photo"><br><br>
+
+    <h2>Marriage Details</h2>
+
+    <label>Nikah Date:</label><br>
+    <input type="date" name="nikah_date"><br><br>
+
+    <label>Marriage Place:</label><br>
+    <input type="text" name="marriage_place"><br><br>
+
+    <label>Khazi / Imam Name:</label><br>
+    <input type="text" name="khazi_name"><br><br>
+
+    <h2>Witness 1</h2>
+
+    <label>Name:</label><br>
+    <input type="text" name="witness1_name"><br><br>
+
+    <label>Mobile:</label><br>
+    <input type="tel" name="witness1_mobile"><br><br>
+
+    <label>Aadhaar Number:</label><br>
+    <input type="text" name="witness1_aadhaar"><br><br>
+
+    <h2>Witness 2</h2>
+
+    <label>Name:</label><br>
+    <input type="text" name="witness2_name"><br><br>
+
+    <label>Mobile:</label><br>
+    <input type="tel" name="witness2_mobile"><br><br>
+
+    <label>Aadhaar Number:</label><br>
+    <input type="text" name="witness2_aadhaar"><br><br>
+
+    <h2>Documents</h2>
+
+    <label>Groom Aadhaar Copy:</label><br>
+    <input type="file"><br><br>
+
+    <label>Bride Aadhaar Copy:</label><br>
+    <input type="file"><br><br>
+
+    <label>Marriage Certificate Copy:</label><br>
+    <input type="file"><br><br>
+
+    <button type="button" onclick="callmarriage()">
+        Save Registration</button>
+    <button type="reset">Clear Form</button>
+
+</form>
+<script src="app.js"></script>
+</body>
+</html>
+```
