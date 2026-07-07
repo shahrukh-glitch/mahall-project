@@ -3,6 +3,12 @@ from flask import Flask, jsonify, request
 import threading
 import sqlite3
 
+from user import (
+    init_users_table_db,
+    create_user,
+    login
+)
+
 from member import (
     init_member_db,
     save_member_registration,
@@ -18,7 +24,7 @@ from member import (
 
 
 def init_db():
-    conn = sqlite3.connect("marriage.db")
+    conn = sqlite3.connect("mahall.db")
     cursor = conn.cursor()
 
     cursor.execute("""
@@ -54,7 +60,15 @@ def add():
     sum = a + b
     return jsonify({"result": f"sum is {sum}"})
 
+#Login Route
+@app.route("/api/create_user", methods=["POST"])
+def create_user_route():
+    return create_user()
 
+@app.route("/api/login")
+def login_route():
+    return login()
+    
 @app.route('/api/save_registration', methods=['POST'])
 def save_registration():
 
@@ -64,7 +78,7 @@ def save_registration():
     groom_lname = data.get('groom_lname')
     groom_mobile = data.get('groom_mobile')
 
-    conn = sqlite3.connect("marriage.db")
+    conn = sqlite3.connect("mahall.db")
     cursor = conn.cursor()
 
     cursor.execute("""
@@ -84,7 +98,7 @@ def save_registration():
 @app.route('/api/view')
 def view():
 
-    conn = sqlite3.connect("marriage.db")
+    conn = sqlite3.connect("mahall.db")
     cursor = conn.cursor()
 
     cursor.execute("SELECT * FROM registrations")
@@ -114,7 +128,7 @@ def search(groom_fname):
 
     print("Searching for:", groom_fname)
 
-    conn = sqlite3.connect("marriage.db")
+    conn = sqlite3.connect("mahall.db")
     cursor = conn.cursor()
 
     cursor.execute(
@@ -177,6 +191,8 @@ if __name__ == '__main__':
     init_db()
 
     init_member_db()
+
+    init_users_table_db()
     
     # Start Flask in background
     threading.Thread(target=start_flask, daemon=True).start()

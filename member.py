@@ -5,7 +5,7 @@ from flask import request, jsonify
 # Create Member Registration Table
 def init_member_db():
 
-    conn = sqlite3.connect("marriage.db")
+    conn = sqlite3.connect("mahall.db")
     cursor = conn.cursor()
 
     cursor.execute("""
@@ -60,7 +60,7 @@ def save_member_registration():
 
     data = request.json
 
-    conn = sqlite3.connect("marriage.db")
+    conn = sqlite3.connect("mahall.db")
     cursor = conn.cursor()
 
     cursor.execute("""
@@ -116,7 +116,7 @@ def save_family_member():
 
     data = request.json
 
-    conn = sqlite3.connect("marriage.db")
+    conn = sqlite3.connect("mahall.db")
     cursor = conn.cursor()
 
     cursor.execute("""
@@ -158,7 +158,7 @@ def save_family_member():
 # View All Families
 def view_members():
 
-    conn = sqlite3.connect("marriage.db")
+    conn = sqlite3.connect("mahall.db")
     cursor = conn.cursor()
 
     cursor.execute("SELECT * FROM member_registration")
@@ -172,7 +172,7 @@ def view_members():
 #View All Family Members
 def view_family_members():
 
-    conn = sqlite3.connect("marriage.db")
+    conn = sqlite3.connect("mahall.db")
     cursor = conn.cursor()
 
     cursor.execute("SELECT * FROM family_members ")
@@ -187,7 +187,7 @@ def view_family_members():
 # Search by Registration Number
 def search_member(search_value):
 
-    conn = sqlite3.connect("marriage.db")
+    conn = sqlite3.connect("mahall.db")
     cursor = conn.cursor()
 
     cursor.execute("""
@@ -239,7 +239,7 @@ def update_member():
 
     data = request.json
 
-    conn = sqlite3.connect("marriage.db")
+    conn = sqlite3.connect("mahall.db")
     cursor = conn.cursor()
 
     cursor.execute("""
@@ -290,7 +290,7 @@ def update_family_member():
 
     data = request.json
 
-    conn = sqlite3.connect("marriage.db")
+    conn = sqlite3.connect("mahall.db")
     cursor = conn.cursor()
 
     cursor.execute("""
@@ -331,7 +331,7 @@ def delete_member():
 
     data = request.json
 
-    conn = sqlite3.connect("marriage.db")
+    conn = sqlite3.connect("mahall.db")
     cursor = conn.cursor()
 
     cursor.execute("""
@@ -363,7 +363,7 @@ def delete_family_member():
     
     data = request.json
 
-    conn = sqlite3.connect("marriage.db")
+    conn = sqlite3.connect("mahall.db")
     cursor = conn.cursor()
 
     cursor.execute("""
