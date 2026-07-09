@@ -6,7 +6,8 @@ import sqlite3
 from user import (
     init_users_table_db,
     create_user,
-    login
+    login,
+    view_users
 )
 
 from member import (
@@ -68,6 +69,10 @@ def create_user_route():
 @app.route("/api/login")
 def login_route():
     return login()
+
+@app.route("/api/view_users", methods=["GET"])
+def view_users_route():
+    return view_users()
     
 @app.route('/api/save_registration', methods=['POST'])
 def save_registration():

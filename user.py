@@ -1,5 +1,6 @@
 import sqlite3
 from flask import request, jsonify
+import bcrypt
 
 def init_users_table_db():
 
@@ -47,27 +48,31 @@ def create_user():
             "Message" : "Username Already Exists"
         })
     else:
+        hashed_password = bcrypt.hashpw(
+            data.get("password").encode(),
+            bcrypt.gensalt())
+
         cursor.execute("""
-      INSERT INTO users(
+        INSERT INTO users(
       
-      username, 
-      password,
-      role)
+        username, 
+        password,
+        role)
                    
-      VALUES(?,?,?)
+        VALUES(?,?,?)
     
-    """,(
-        data.get("username"),
-        data.get("password"),
-        data.get("role")
-    ))
+        """,(
+          data.get("username"),
+          hashed_password.decode(),
+          data.get("role")
+        ))
 
-    conn.commit()
-    conn.close()
+        conn.commit()
+        conn.close()
 
-    return jsonify({
-        "Message" : "User Created Successfully"
-    })
+        return jsonify({
+          "Message" : "User Created Successfully"
+        })
 
 def login():
 
@@ -80,27 +85,38 @@ def login():
                
     SELECT * FROM users
     
-    WHERE username = ? AND
-    password = ?   
+    WHERE username = ?   
     
     """,(
         data.get("username"),
-        data.get("password")
     ))
 
     user = cursor.fetchone()
-
     conn.close()
 
-    if user :
-        
-        return jsonify({
-            "Message" : "Access Granted"
-        })
+    if user:
+        if bcrypt.checkpw(
+            data.get("password").encode(),
+            user[2].encode()
+        ):
+            return jsonify({
+                "message" : "Access Granted"
+            })
+        else:
+            return jsonify({
+                "message" : "Incorrect Password"
+            })
     else:
         return jsonify({
-            "Message" : "Incorrect Username or Password"
+            "message" : "User not Found"
         })
+
+    
+
+    
+            
+    
+    
 
 def forgot_password():
 
@@ -131,3 +147,20 @@ def forgot_password():
     return jsonify({
         "Message" : "Password Changed Successfully"
     })
+
+def view_users():
+
+    conn = sqlite3.connect("mahall.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    SELECT * FROM users
+    """)
+
+    users = cursor.fetchall()
+
+    conn.close()
+
+    return jsonify(users)
+    
+    
