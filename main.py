@@ -23,6 +23,16 @@ from member import (
     delete_family_member
 )
 
+from usthad import (
+    init_usthad_db,
+    usthad_registration,
+    view_usthad_list,
+    view_usthad_details,
+    search_usthad,
+    update_usthad,
+    delete_usthad
+)
+
 
 def init_db():
     conn = sqlite3.connect("mahall.db")
@@ -39,6 +49,8 @@ def init_db():
 
     conn.commit()
     conn.close()
+
+
 
 app = Flask(__name__, static_folder='web', template_folder='web')
 
@@ -188,6 +200,32 @@ def delete_member_route():
 def delete_family_member_route():
     return delete_family_member()
 
+#Usthad Registration
+@app.route("/api/usthad_registration", methods = ["POST"])
+def usthad_registration_route():
+    return usthad_registration()
+
+#View Usthad
+@app.route("/api/view_usthad_list", methods=["GET"])
+def view_usthad_list_route():
+    return view_usthad_list()
+
+@app.route("/api/view_usthad/<int:id>")
+def view_usthad_details_route(id):
+    return view_usthad_details(id)
+
+@app.route("/api/search_usthad/<search_value>")
+def search_usthad_route(search_value):
+    return search_usthad(search_value)
+
+@app.route("/api/update_usthad", methods = ["PUT"])
+def update_usthad_route():
+    return update_usthad()
+
+@app.route("/api/delete_usthad", methods = ["DELETE"])
+def delete_usthad_route():
+    return delete_usthad()
+
 def start_flask():
     app.run(port=5000, threaded=True)
 
@@ -198,6 +236,8 @@ if __name__ == '__main__':
     init_member_db()
 
     init_users_table_db()
+
+    init_usthad_db()
     
     # Start Flask in background
     threading.Thread(target=start_flask, daemon=True).start()

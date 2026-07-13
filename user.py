@@ -111,13 +111,6 @@ def login():
             "message" : "User not Found"
         })
 
-    
-
-    
-            
-    
-    
-
 def forgot_password():
 
     data = request.json
@@ -148,6 +141,7 @@ def forgot_password():
         "Message" : "Password Changed Successfully"
     })
 
+#temporary function for testing.
 def view_users():
 
     conn = sqlite3.connect("mahall.db")
