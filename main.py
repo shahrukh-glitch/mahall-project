@@ -33,6 +33,15 @@ from usthad import (
     delete_usthad
 )
 
+from payroll import(
+    init_salary_history_db,
+    generate_payroll,
+    view_salary_history,
+    pay_salary,
+    generate_payslip,
+    search_payslip
+)
+
 
 def init_db():
     conn = sqlite3.connect("mahall.db")
@@ -226,6 +235,27 @@ def update_usthad_route():
 def delete_usthad_route():
     return delete_usthad()
 
+#Payroll
+@app.route("/api/generate_payroll", methods = ["POST"])
+def generate_payroll_route():
+    return generate_payroll()
+
+@app.route("/api/view_salary_history")
+def view_salary_history_route():
+    return view_salary_history()
+
+@app.route("/api/pay_salary", methods = ["PUT"])
+def pay_salary_route():
+    return pay_salary()
+
+@app.route("/api/generate_payslip")
+def generate_payslip_route():
+    return generate_payslip()
+
+@app.route("/api/search_payslip", methods = ["POST"])
+def search_payslip_route():
+    return search_payslip()
+
 def start_flask():
     app.run(port=5000, threaded=True)
 
@@ -238,6 +268,8 @@ if __name__ == '__main__':
     init_users_table_db()
 
     init_usthad_db()
+
+    init_salary_history_db()
     
     # Start Flask in background
     threading.Thread(target=start_flask, daemon=True).start()
