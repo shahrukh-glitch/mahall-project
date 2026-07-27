@@ -23,6 +23,9 @@ def init_donation_db():
         ) 
         """)
 
+    conn.commit()
+    conn.close()
+
 def save_donation():
 
     data = request.json

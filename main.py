@@ -51,6 +51,15 @@ from donation import(
     delete_donation
     )
 
+from expense import(
+    init_expense_db,
+    save_expense,
+    view_expense,
+    search_expense,
+    update_expense,
+    delete_expense
+)
+
 
 def init_db():
     conn = sqlite3.connect("mahall.db")
@@ -286,6 +295,28 @@ def update_donation_route():
 def delete_donation_route():
     return delete_donation()
 
+#Expense
+@app.route("/api/save_expense",methods = ["POST"])
+def save_expense_route():
+    return save_expense()
+
+@app.route("/api/view_expense")
+def view_expense_route():
+    return view_expense()
+
+@app.route("/api/search_expense/<search_value>")
+def search_expense_route(search_value):
+    return search_expense(search_value)
+
+@app.route("/api/update_expense",methods = ["PUT"])
+def update_expense_route():
+    return update_expense()
+
+@app.route("/api/delete_expense",methods = ["DELETE"])
+def delete_expense_route():
+    return delete_expense()
+
+
 def start_flask():
     app.run(port=5000, threaded=True)
 
@@ -302,6 +333,8 @@ if __name__ == '__main__':
     init_salary_history_db()
 
     init_donation_db()
+
+    init_expense_db()
     
     # Start Flask in background
     threading.Thread(target=start_flask, daemon=True).start()
