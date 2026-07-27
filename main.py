@@ -42,6 +42,15 @@ from payroll import(
     search_payslip
 )
 
+from donation import(
+    init_donation_db,
+    save_donation,
+    view_donations,
+    search_donation,
+    update_donation,
+    delete_donation
+    )
+
 
 def init_db():
     conn = sqlite3.connect("mahall.db")
@@ -256,6 +265,27 @@ def generate_payslip_route():
 def search_payslip_route():
     return search_payslip()
 
+#Donation
+@app.route("/api/save_donation", methods = ["POST"])
+def save_donation_route():
+    return save_donation()
+
+@app.route("/api/view_donations")
+def view_donations_route():
+    return view_donations()
+
+@app.route("/api/search_donation/<search_value>")
+def search_donation_route(search_value):
+    return search_donation(search_value)
+
+@app.route("/api/update_donation", methods = ["PUT"])
+def update_donation_route():
+    return update_donation()
+
+@app.route("/api/delete_donation", methods = ["DELETE"])
+def delete_donation_route():
+    return delete_donation()
+
 def start_flask():
     app.run(port=5000, threaded=True)
 
@@ -270,6 +300,8 @@ if __name__ == '__main__':
     init_usthad_db()
 
     init_salary_history_db()
+
+    init_donation_db()
     
     # Start Flask in background
     threading.Thread(target=start_flask, daemon=True).start()
