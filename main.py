@@ -60,6 +60,21 @@ from expense import(
     delete_expense
 )
 
+from dashboard import(
+    dashboard
+)
+
+from cash_register import(
+    init_cash_register_db,
+    view_cash_register
+)
+
+from reports import(
+    donation_reports,
+    expense_reports,
+    financial_summary
+)
+
 
 def init_db():
     conn = sqlite3.connect("mahall.db")
@@ -316,6 +331,28 @@ def update_expense_route():
 def delete_expense_route():
     return delete_expense()
 
+#Dashboard
+@app.route("/api/dashboard")
+def dashboard_route():
+    return dashboard()
+
+#Cash Register
+@app.route("/api/view_cash_register", methods=["GET"])
+def view_cash_register_api():
+    return view_cash_register()
+
+#Reports
+@app.route("/api/donation_reports",methods = ["POST"])
+def donation_reports_route():
+    return donation_reports()
+
+@app.route("/api/expense_reports",methods = ["POST"])
+def expense_reports_route():
+    return expense_reports()
+
+@app.route("/api/financial_summary",methods = ["POST"])
+def financial_summary_route():
+    return financial_summary()
 
 def start_flask():
     app.run(port=5000, threaded=True)
@@ -335,6 +372,8 @@ if __name__ == '__main__':
     init_donation_db()
 
     init_expense_db()
+
+    init_cash_register_db()
     
     # Start Flask in background
     threading.Thread(target=start_flask, daemon=True).start()

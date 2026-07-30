@@ -1,6 +1,7 @@
 import sqlite3
 from flask import request, jsonify
 from datetime import date
+from cash_register import add_cash_transaction 
 
 def init_donation_db():
 
@@ -95,6 +96,15 @@ def save_donation():
 
     conn.commit()
     conn.close()
+
+    add_cash_transaction(
+    transaction_date=today,
+    voucher_number=donation_number,
+    transaction_type="Donation",
+    description=data.get("donation_type"),
+    money_in=float(data.get("donation_amount")),
+    money_out=0
+    )
 
     return jsonify({
         "message" : "Saved Successfully"

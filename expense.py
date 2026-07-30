@@ -1,6 +1,7 @@
 import sqlite3
 from flask import request, jsonify
 from datetime import date
+from cash_register import add_cash_transaction
 
 def init_expense_db():
 
@@ -97,6 +98,15 @@ def save_expense():
 
     conn.commit()
     conn.close()
+
+    add_cash_transaction(
+    transaction_date=today,
+    voucher_number=expense_number,
+    transaction_type="Expense",
+    description=data.get("expense_category"),
+    money_in=0,
+    money_out=float(data.get("expense_amount"))
+    )
 
     return jsonify({
          "message" : "Saved Successfully"
