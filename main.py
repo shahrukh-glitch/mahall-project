@@ -75,6 +75,11 @@ from reports import(
     financial_summary
 )
 
+from ledger import(
+    ledger,
+    cash_flow
+)
+
 
 def init_db():
     conn = sqlite3.connect("mahall.db")
@@ -353,6 +358,15 @@ def expense_reports_route():
 @app.route("/api/financial_summary",methods = ["POST"])
 def financial_summary_route():
     return financial_summary()
+
+#Ledger
+@app.route("/api/ledger", methods = ["POST"])
+def ledger_route():
+    return ledger()
+
+@app.route("/api/cash_flow", methods = ["POST"])
+def cash_flow_route():
+    return cash_flow()
 
 def start_flask():
     app.run(port=5000, threaded=True)
