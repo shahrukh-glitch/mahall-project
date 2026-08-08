@@ -8,15 +8,67 @@
 
     <title>Family Members</title>
 
-    <link rel="stylesheet" href="/web/style.css">
+    <link rel="stylesheet" href="/web/global.css">
 
 </head>
 
 <body>
 
+    <header class="header">
+
+    <div class="logo">
+
+        🕌 Mahall Management System
+
+    </div>
+
+    <div class="user-info">
+
+        Welcome, Admin
+
+        <button
+            class="logout-btn"
+            onclick="window.location.href='/'">
+
+            Logout
+
+        </button>
+
+    </div>
+
+</header>
+
+<nav class="navbar">
+
+    <a href="/dashboard">Dashboard</a>
+
+    <a href="/member_registration" class="active">Members</a>
+
+    <a href="/donation">Donations</a>
+
+    <a href="/expense">Expenses</a>
+
+    <a href="/salary">Salary</a>
+
+    <a href="/cash_register">Cash Register</a>
+
+    <a href="/reports">Reports</a>
+
+</nav>
+
+<div class="page-container">
+
 <div class="container">
 
 <h1>Family Members</h1>
+     
+        <button
+            type="button"
+            onclick="goBackToMembers()">
+
+            ← Back to Member Registration
+
+        </button>
 
 <form id="memberForm">
 
@@ -101,11 +153,16 @@
 
         </div>
 
-        <button type="button" id="addMember">
+        <div class="button-group">
+            
+            <button 
+                type="button" 
+                id="addMember">
 
-            Add Member
+                Add Member
 
-        </button>
+            </button>
+        </div>
 
     </div>
 
@@ -128,6 +185,10 @@
 <th>Relationship</th>
 
 <th>Occupation</th>
+
+<th>Education</th>
+
+<th>Actions</th>
 
 </tr>
 

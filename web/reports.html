@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reports</title>
+
+    <link rel="stylesheet" href="/web/global.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        🕌 Mahall Management System
+    </div>
+
+    <div class="user-info">
+
+        Welcome, Admin
+
+        <button
+            class="logout-btn"
+            onclick="window.location.href='/'">
+
+            Logout
+
+        </button>
+
+    </div>
+
+</header>
+
+<nav class="navbar">
+
+    <a href="/dashboard">Dashboard</a>
+
+    <a href="/member_registration">Members</a>
+
+    <a href="/donation">Donations</a>
+
+    <a href="/expense">Expenses</a>
+
+    <a href="/salary">Salary</a>
+
+    <a href="/cash_register">Cash Register</a>
+
+    <a href="/reports" class="active">Reports</a>
+
+</nav>
+
+<div class="page-container">
+
+<div class="container">
+
+<h1>Reports</h1>
+
+<!-- =========================
+     FINANCIAL SUMMARY
+========================= -->
+
+<div class="card">
+
+<h2>Financial Summary</h2>
+
+<div class="row">
+
+<div class="form-group">
+
+<label>Month</label>
+
+<select id="summary_month">
+
+<option value="01">January</option>
+<option value="02">February</option>
+<option value="03">March</option>
+<option value="04">April</option>
+<option value="05">May</option>
+<option value="06">June</option>
+<option value="07">July</option>
+<option value="08">August</option>
+<option value="09">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>Year</label>
+
+<select id="summary_year">
+
+<option>2025</option>
+<option selected>2026</option>
+<option>2027</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="button-group">
+
+<button
+type="button"
+id="loadSummary">
+
+Show Summary
+
+</button>
+
+</div>
+
+<table>
+
+<tr>
+
+<td><b>Total Donations</b></td>
+
+<td id="totalDonations">0</td>
+
+</tr>
+
+<tr>
+
+<td><b>Total Expenses</b></td>
+
+<td id="totalExpenses">0</td>
+
+</tr>
+
+<tr>
+
+<td><b>Net Cash</b></td>
+
+<td id="netCash">0</td>
+
+</tr>
+
+<tr>
+
+<td><b>Donation Transactions</b></td>
+
+<td id="donationTransactions">0</td>
+
+</tr>
+
+<tr>
+
+<td><b>Expense Transactions</b></td>
+
+<td id="expenseTransactions">0</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- =========================
+     DONATION REPORT
+========================= -->
+
+<div class="card">
+
+<h2>Donation Report</h2>
+
+<div class="row">
+
+<div class="form-group">
+
+<label>Month</label>
+
+<select id="donation_month">
+
+<option value="01">January</option>
+<option value="02">February</option>
+<option value="03">March</option>
+<option value="04">April</option>
+<option value="05">May</option>
+<option value="06">June</option>
+<option value="07">July</option>
+<option value="08">August</option>
+<option value="09">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>Year</label>
+
+<select id="donation_year">
+
+<option>2025</option>
+<option selected>2026</option>
+<option>2027</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="button-group">
+
+<button
+type="button"
+id="searchDonationReport">
+
+Search
+
+</button>
+
+</div>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Date</th>
+<th>Donor</th>
+<th>Amount</th>
+
+</tr>
+
+</thead>
+
+<tbody id="donationReportTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+<!-- =========================
+     EXPENSE REPORT
+========================= -->
+
+<div class="card">
+
+<h2>Expense Report</h2>
+
+<div class="row">
+
+<div class="form-group">
+
+<label>Month</label>
+
+<select id="expense_month">
+
+<option value="01">January</option>
+<option value="02">February</option>
+<option value="03">March</option>
+<option value="04">April</option>
+<option value="05">May</option>
+<option value="06">June</option>
+<option value="07">July</option>
+<option value="08">August</option>
+<option value="09">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>Year</label>
+
+<select id="expense_year">
+
+<option>2025</option>
+<option selected>2026</option>
+<option>2027</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="button-group">
+
+<button
+type="button"
+id="searchExpenseReport">
+
+Search
+
+</button>
+
+</div>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Date</th>
+<th>Expense</th>
+<th>Amount</th>
+
+</tr>
+
+</thead>
+
+<tbody id="expenseReportTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="/web/reports.js"></script>
+
+</body>
+
+</html>

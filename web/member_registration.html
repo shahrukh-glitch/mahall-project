@@ -4,200 +4,329 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Member Registration</title>
 
-    <link rel="stylesheet" href="/web/style.css">
+    <link rel="stylesheet"
+          href="/web/global.css">
 
 </head>
 
 <body>
 
+<!-- Header -->
+
+<header class="header">
+
+    <div class="logo">
+
+        🕌 Mahall Management System
+
+    </div>
+
+    <div class="user-info">
+
+        Welcome, Admin
+
+        <button class="logout-btn"
+                onclick="window.location.href='/'">
+
+            Logout
+
+        </button>
+
+    </div>
+
+</header>
+
+<!-- Navigation -->
+
+<nav class="navbar">
+
+    <a href="/dashboard">Dashboard</a>
+
+    <a href="/member_registration" class="active">Members</a>
+
+    <a href="/donation">Donations</a>
+
+    <a href="/expense">Expenses</a>
+
+    <a href="/salary">Salary</a>
+
+    <a href="/cash_register">Cash Register</a>
+
+    <a href="/reports">Reports</a>
+
+</nav>
+
+<div class="page-container">
+
 <div class="container">
 
-    <h1>Member Registration Form</h1>
+<h1>Member Registration</h1>
 
-    <form id="memberForm">
+<form id="memberForm">
 
-        <!-- ============================= -->
-        <!-- Registration Details -->
-        <!-- ============================= -->
+<div class="card">
 
-        <div class="card">
+<h2>Registration Details</h2>
 
-            <h2>Registration Details</h2>
+<div class="row">
 
-            <div class="row">
+<div class="form-group">
 
-                <div class="form-group">
+<label>Registration Number</label>
 
-                    <label>Registration Number</label>
+<input
+type="text"
+id="registration_number"
+required>
 
-                    <input
-                        type="text"
-                        name="registration_number"
-                        required>
+</div>
 
-                </div>
+<div class="form-group">
 
-                <div class="form-group">
+<label>Mahallu</label>
 
-                    <label>Mahallu</label>
+<input
+type="text"
+id="mahallu">
 
-                    <input
-                        type="text"
-                        name="mahallu">
+</div>
 
-                </div>
+</div>
 
-            </div>
+<div class="row">
 
+<div class="form-group">
 
-            <div class="row">
+<label>Ward</label>
 
-                <div class="form-group">
+<input
+type="text"
+id="ward">
 
-                    <label>Ward</label>
+</div>
 
-                    <input
-                        type="text"
-                        name="ward">
+<div class="form-group">
 
-                </div>
+<label>House Number</label>
 
-                <div class="form-group">
+<input
+type="text"
+id="house_number">
 
-                    <label>House Number</label>
+</div>
 
-                    <input
-                        type="text"
-                        name="house_number">
+</div>
 
-                </div>
+<div class="row">
 
-            </div>
+<div class="form-group">
 
+<label>Family Number</label>
 
-            <div class="row">
+<input
+type="text"
+id="family_number">
 
-                <div class="form-group">
+</div>
 
-                    <label>Family Number</label>
+<div class="form-group">
 
-                    <input
-                        type="text"
-                        name="family_number">
+<label>Registration Date</label>
 
-                </div>
+<input
+type="date"
+id="registration_date">
 
-                <div class="form-group">
+</div>
 
-                    <label>Registration Date</label>
+</div>
 
-                    <input
-                        type="date"
-                        name="registration_date">
+<hr class="section-divider">
 
-                </div>
+<h2>Family Head Details</h2>
 
-            </div>
+<div class="row">
 
-        </div>
+<div class="form-group">
 
-        <!-- ============================= -->
-        <!-- Family Head Details -->
-        <!-- ============================= -->
+<label>Family Head</label>
 
-        <div class="card">
+<input
+type="text"
+id="family_head">
 
-            <h2>Family Head Details</h2>
+</div>
 
-            <div class="row">
+<div class="form-group">
 
-                <div class="form-group">
+<label>Father Name</label>
 
-                    <label>Family Head Name</label>
+<input
+type="text"
+id="father_name">
 
-                    <input
-                        type="text"
-                        name="family_head">
+</div>
 
-                </div>
+</div>
 
-                <div class="form-group">
+<div class="row">
 
-                    <label>Father Name</label>
+<div class="form-group">
 
-                    <input
-                        type="text"
-                        name="father_name">
+<label>House Name</label>
 
-                </div>
+<input
+type="text"
+id="house_name">
 
-            </div>
+</div>
 
-            <div class="row">
+<div class="form-group">
 
-                <div class="form-group">
+<label>Phone Number</label>
 
-                    <label>House Name</label>
+<input
+type="text"
+id="phone">
 
-                    <input
-                        type="text"
-                        name="house_name">
+</div>
 
-                </div>
+</div>
 
-                <div class="form-group">
+<div class="row">
 
-                    <label>Phone Number</label>
+<div class="form-group full-width">
 
-                    <input
-                        type="text"
-                        name="phone">
+<label>Address</label>
 
-                </div>
+<textarea
+id="address"
+rows="3"></textarea>
 
-            </div>
+</div>
 
-            <div class="row">
+</div>
 
-                <div class="form-group full-width">
+<div class="button-group">
 
-                    <label>Address</label>
+<button
+type="button"
+id="saveButton"
+onclick="saveMember()">
 
-                    <textarea
-                        name="address"
-                        rows="4"></textarea>
+Save Member
 
-                </div>
+</button>
 
-            </div>
+<button
+type="button"
+onclick="clearMemberForm()">
 
-        </div>
+Clear
 
-        <!-- ============================= -->
-        <!-- Buttons -->
-        <!-- ============================= -->
+</button>
 
-        <div class="button-group">
+</div>
 
-            <button type="submit">
+</div>
 
-                Save & Continue
+</form>
 
-            </button>
+<div class="search-bar">
 
-            <button type="reset">
+<input
+type="text"
+id="searchMember"
+placeholder="Search by Registration Number or Family Head">
 
-                Clear
+<button onclick="searchMember()">
 
-            </button>
+Search
 
-        </div>
+</button>
 
-    </form>
+<button onclick="loadMembers()">
+
+Show All
+
+</button>
+
+</div>
+
+<h2>Family List</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Registration No</th>
+<th>Family Head</th>
+<th>Mahallu</th>
+<th>Phone</th>
+<th>Family No</th>
+<th>Members</th>
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody id="memberTable">
+
+</tbody>
+
+</table>
+
+<hr class="section-divider">
+
+<div id="familySection" style="display:none;">
+
+    <h2 id="familyTitle">Family Members</h2>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Relationship</th>
+                <th>Occupation</th>
+                <th>Education</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="familyTable">
+
+            <tr>
+
+                <td colspan="6">
+
+                    Click a Family Head to view members.
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</div>
 
 </div>
 

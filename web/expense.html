@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Expense Management</title>
+
+    <link rel="stylesheet" href="/web/global.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+
+        🕌 Mahall Management System
+
+    </div>
+
+    <div class="user-info">
+
+        Welcome, Admin
+
+        <button class="logout-btn">
+
+            Logout
+
+        </button>
+
+    </div>
+
+</header>
+
+<nav class="navbar">
+
+    <a href="/dashboard">Dashboard</a>
+
+    <a href="/member_registration">Members</a>
+
+    <a href="/donation">Donations</a>
+
+    <a href="/expense" class="active">Expenses</a>
+
+    <a href="/salary">Salary</a>
+
+    <a href="/cash_register">Cash Register</a>
+
+    <a href="/reports">Reports</a>
+
+</nav>
+
+<div class="page-container">
+
+    <!-- Expense Form -->
+
+    <div class="form-card">
+
+        <h1>Expense Entry</h1>
+
+        <select id="expense_category">
+
+            <option>Electricity</option>
+            <option>Water</option>
+            <option>Internet</option>
+            <option>Maintenance</option>
+            <option>Cleaning</option>
+            <option>Office Supplies</option>
+            <option>Salary</option>
+            <option>Charity</option>
+            <option>Building</option>
+            <option>Other</option>
+
+        </select>
+
+        <input
+            type="text"
+            id="expense_description"
+            placeholder="Expense Description"
+        >
+
+        <input
+            type="number"
+            id="expense_amount"
+            placeholder="Expense Amount"
+        >
+
+        <input
+            type="text"
+            id="payment_method"
+            placeholder="Cash / UPI / Bank"
+        >
+
+        <input
+            type="text"
+            id="paid_to"
+            placeholder="Paid To"
+        >
+
+        <input
+            type="text"
+            id="approved_by"
+            placeholder="Approved By"
+        >
+
+        <input
+            type="text"
+            id="remarks"
+            placeholder="Remarks"
+        >
+
+        <button
+            id="saveButton"
+            onclick="saveExpense()">
+
+            Save Expense
+
+        </button>
+
+    </div>
+
+    <!-- Search -->
+
+    <div class="search-card">
+
+        <h2>Search Expense</h2>
+
+        <input
+            type="text"
+            id="searchExpense"
+            placeholder="Expense No"
+        >
+
+        <button onclick="searchExpense()">
+
+            Search
+
+        </button>
+
+        <button onclick="loadExpense()">
+
+            Show All
+
+        </button>
+
+    </div>
+
+    <!-- Table -->
+
+    <div class="table-card">
+
+        <h2>Expense List</h2>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Expense No</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Payment</th>
+                    <th>Paid To</th>
+                    <th>Date</th>
+                    <th>Approved By</th>
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="expenseTable">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script src="/web/expense.js"></script>
+
+</body>
+
+</html>

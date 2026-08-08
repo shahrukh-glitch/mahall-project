@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Mahall Management System</title>
+
+    <link rel="stylesheet" href="/web/global.css">
+
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <header class="header">
+
+        <div class="logo">
+
+            🕌 Mahall Management System
+
+        </div>
+
+        <div class="user-info">
+
+            Welcome, Admin
+
+            <button class="logout-btn">
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- Navigation -->
+
+    <nav class="navbar">
+
+        <a href="/dashboard" class="active">Dashboard</a>
+
+        <a href="/member_registration">Members</a>
+
+        <a href="/marriage">Marriage Registration</a>
+
+        <a href="/donation">Donations</a>
+
+        <a href="/expense">Expenses</a>
+
+        <a href="/Usthad">Staffs</a>
+
+        <a href="/salary">Salary</a>
+
+        <a href="/cash_register">Cash Register</a>
+
+        <a href="/ledger">Ledger</a>
+
+        <a href="/reports">Reports</a>
+
+    </nav>
+
+
+    <!-- Dashboard Content -->
+
+    <div class="container">
+
+        <h2>Dashboard</h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>Total Members</h3>
+
+                <p id="members-count">0</p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Families</h3>
+
+                <p id="families-count">0</p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Donations</h3>
+
+                <p id="donation-total">₹0</p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Expenses</h3>
+
+                <p id="expense-total">₹0</p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Net Cash</h3>
+
+                <p id="net-cash">₹0</p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Usthads</h3>
+
+                <p id="usthad-count">0</p>
+
+            </div>
+
+        </div>
+
+        <h2>Recent Transactions</h2>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Date</th>
+
+                    <th>Voucher</th>
+
+                    <th>Type</th>
+
+                    <th>Description</th>
+
+                    <th>Amount</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="transaction-table">
+
+                <tr>
+
+                    <td colspan="5">
+
+                        No Transactions Found
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <script src="/web/dashboard.js"></script>
+
+</body>
+
+</html>

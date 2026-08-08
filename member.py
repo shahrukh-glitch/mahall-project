@@ -207,9 +207,9 @@ def search_member(search_value):
 
     if member is None:
         conn.close()
-        return jsonify(
-            "Member Not Found"
-        )
+        return jsonify({
+            "message" : "Member Not Found"
+        })
     else:
         family_id = member[0]
      
@@ -233,6 +233,64 @@ def search_member(search_value):
             family_members
         }
     )
+
+def search_member_by_id(member_id):
+
+    conn = sqlite3.connect("mahall.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+
+        SELECT *
+
+        FROM member_registration
+
+        WHERE id = ?
+
+    """, (member_id,))
+
+    member = cursor.fetchone()
+
+    conn.close()
+
+    if member:
+
+        return jsonify(member)
+
+    else:
+
+        return jsonify({
+            "message": "Member Not Found"
+        })
+
+def search_family_member(member_id):
+
+    conn = sqlite3.connect("mahall.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+
+        SELECT *
+
+        FROM family_members
+
+        WHERE id = ?
+
+    """, (member_id,))
+
+    member = cursor.fetchone()
+
+    conn.close()
+
+    if member:
+
+        return jsonify(member)
+
+    else:
+
+        return jsonify({
+            "message": "Member Not Found"
+        })
 
 #Updating Member 
 def update_member():

@@ -17,6 +17,8 @@ from member import (
     view_members,
     view_family_members,
     search_member,
+    search_member_by_id,
+    search_family_member,
     update_member,
     update_family_member,
     delete_member,
@@ -96,118 +98,60 @@ def init_db():
 
     conn.commit()
     conn.close()
-
-
-
+    
 app = Flask(__name__, static_folder='web', template_folder='web')
 
 @app.route('/')
-def index():
-    return app.send_static_file('index.html')
+def login_page():
+    return app.send_static_file('login.html')
 
-@app.route('/api/hello', methods=['POST'])
-def hello():
-    data = request.json
-    name = data.get('name', 'World')
-    return jsonify({"message": f"Hello {name} from Python!"})
+@app.route("/dashboard")
+def dashboard_page():
+    return app.send_static_file("dashboards.html")
 
+@app.route("/member_registration")
+def member_registration():
+    return app.send_static_file("member_registration.html")
 
-@app.route('/api/add', methods=['POST'])
-def add():
-    data = request.json
-    a = data.get('a', 'World')
-    b = data.get('b', 'World')
-    sum = a + b
-    return jsonify({"result": f"sum is {sum}"})
+@app.route("/donation")
+def donation_page():
+    return app.send_static_file("donation.html")
 
-#Login Route
+@app.route("/expense")
+def expense_page():
+    return app.send_static_file("expense.html")
+
+@app.route("/salary")
+def salary_page():
+    return app.send_static_file("payroll.html")
+
+@app.route("/cash_register")
+def cash_register_page():
+    return app.send_static_file("cash_register.html")
+
+@app.route("/reports")
+def reports_page():
+    return app.send_static_file("reports.html")
+
+#  LOGIN
+
 @app.route("/api/create_user", methods=["POST"])
 def create_user_route():
     return create_user()
 
-@app.route("/api/login")
+@app.route("/api/login",methods = ["POST"])
 def login_route():
     return login()
 
 @app.route("/api/view_users", methods=["GET"])
 def view_users_route():
     return view_users()
-    
-@app.route('/api/save_registration', methods=['POST'])
-def save_registration():
 
-    data = request.json
-
-    groom_fname = data.get('groom_fname')
-    groom_lname = data.get('groom_lname')
-    groom_mobile = data.get('groom_mobile')
-
-    conn = sqlite3.connect("mahall.db")
-    cursor = conn.cursor()
-
-    cursor.execute("""
-    INSERT INTO registrations
-    (groom_fname, groom_lname, groom_mobile)
-    VALUES (?, ?, ?)
-    """, (groom_fname, groom_lname, groom_mobile))
-
-    conn.commit()
-    conn.close()
-
-    return jsonify({
-        "message": "Registration saved successfully"
-    })
-
-
-@app.route('/api/view')
-def view():
-
-    conn = sqlite3.connect("mahall.db")
-    cursor = conn.cursor()
-
-    cursor.execute("SELECT * FROM registrations")
-
-    rows = cursor.fetchall()
-
-    conn.close()
-
-    return jsonify(rows)
-
-
-@app.route('/view')
-def view_page():
-    return app.send_static_file('view.html')
-
-
-@app.route("/member_registration")
-def member_registration():
-    return app.send_static_file("member_registration.html")
+# MEMBER REGISTRATION   
 
 @app.route("/api/save_family_member", methods=["POST"])
 def save_family_member_route():
     return save_family_member()
-
-@app.route('/api/search/<groom_fname>')
-def search(groom_fname):
-
-    print("Searching for:", groom_fname)
-
-    conn = sqlite3.connect("mahall.db")
-    cursor = conn.cursor()
-
-    cursor.execute(
-        "SELECT * FROM registrations WHERE groom_fname = ?",
-        (groom_fname,)
-    )
-
-    row = cursor.fetchone()
-
-    print("Found;", row)
-
-    conn.close()
-
-    return jsonify(row)
-
 
 @app.route("/api/save_member", methods=["POST"])
 def save_member():
@@ -225,12 +169,18 @@ def view_members_route():
 def view_family_members_route():
     return view_family_members()
 
-#search member
 @app.route("/api/search_member/<search_value>")
 def search_member_route(search_value):
     return search_member(search_value)
 
-#update Member
+@app.route("/api/search_family_member/<int:member_id>")
+def search_family_member_route(member_id):
+    return search_family_member(member_id)
+
+@app.route("/api/search_member_by_id/<int:member_id>")
+def search_member_by_id_route(member_id):
+    return search_member_by_id(member_id)
+
 @app.route("/api/update_member" , methods=["PUT"])
 def update_member_route():
     return update_member()
@@ -247,12 +197,12 @@ def delete_member_route():
 def delete_family_member_route():
     return delete_family_member()
 
-#Usthad Registration
+#    Usthad Registration
+
 @app.route("/api/usthad_registration", methods = ["POST"])
 def usthad_registration_route():
     return usthad_registration()
 
-#View Usthad
 @app.route("/api/view_usthad_list", methods=["GET"])
 def view_usthad_list_route():
     return view_usthad_list()
@@ -273,7 +223,8 @@ def update_usthad_route():
 def delete_usthad_route():
     return delete_usthad()
 
-#Payroll
+#    PAYROLL
+
 @app.route("/api/generate_payroll", methods = ["POST"])
 def generate_payroll_route():
     return generate_payroll()
@@ -286,7 +237,7 @@ def view_salary_history_route():
 def pay_salary_route():
     return pay_salary()
 
-@app.route("/api/generate_payslip")
+@app.route("/api/generate_payslip",methods = ["POST"])
 def generate_payslip_route():
     return generate_payslip()
 
@@ -294,7 +245,8 @@ def generate_payslip_route():
 def search_payslip_route():
     return search_payslip()
 
-#Donation
+#  DONATION
+
 @app.route("/api/save_donation", methods = ["POST"])
 def save_donation_route():
     return save_donation()
@@ -315,7 +267,8 @@ def update_donation_route():
 def delete_donation_route():
     return delete_donation()
 
-#Expense
+# EXPENSE
+
 @app.route("/api/save_expense",methods = ["POST"])
 def save_expense_route():
     return save_expense()
@@ -336,17 +289,20 @@ def update_expense_route():
 def delete_expense_route():
     return delete_expense()
 
-#Dashboard
+#    Dashboard
+
 @app.route("/api/dashboard")
 def dashboard_route():
     return dashboard()
 
-#Cash Register
+#    Cash Register
+
 @app.route("/api/view_cash_register", methods=["GET"])
 def view_cash_register_api():
     return view_cash_register()
 
-#Reports
+#    Reports
+
 @app.route("/api/donation_reports",methods = ["POST"])
 def donation_reports_route():
     return donation_reports()
@@ -359,7 +315,8 @@ def expense_reports_route():
 def financial_summary_route():
     return financial_summary()
 
-#Ledger
+#     Ledger
+
 @app.route("/api/ledger", methods = ["POST"])
 def ledger_route():
     return ledger()

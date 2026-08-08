@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Cash Register</title>
+
+    <link rel="stylesheet" href="/web/global.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+
+        🕌 Mahall Management System
+
+    </div>
+
+    <div class="user-info">
+
+        Welcome, Admin
+
+        <button
+            class="logout-btn"
+            onclick="window.location.href='/'">
+
+            Logout
+
+        </button>
+
+    </div>
+
+</header>
+
+<nav class="navbar">
+
+    <a href="/dashboard">Dashboard</a>
+
+    <a href="/member_registration">Members</a>
+
+    <a href="/donation">Donations</a>
+
+    <a href="/expense">Expenses</a>
+
+    <a href="/salary">Salary</a>
+
+    <a href="/cash_register" class="active">
+
+        Cash Register
+
+    </a>
+
+    <a href="/reports">Reports</a>
+
+</nav>
+
+<div class="page-container">
+
+<div class="container">
+
+<h1>Cash Register</h1>
+
+<div class="card">
+
+<h2>Cash Register Ledger</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Date</th>
+<th>Voucher</th>
+<th>Type</th>
+<th>Description</th>
+<th>Money In</th>
+<th>Money Out</th>
+<th>Balance</th>
+
+</tr>
+
+</thead>
+
+<tbody id="cashTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="/web/cash_register.js"></script>
+
+</body>
+
+</html>

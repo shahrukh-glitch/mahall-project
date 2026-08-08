@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Donation Management</title>
+
+    <link rel="stylesheet" href="/web/global.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+
+        🕌 Mahall Management System
+
+    </div>
+
+    <div class="user-info">
+
+        Welcome, Admin
+
+        <button class="logout-btn">
+
+            Logout
+
+        </button>
+
+    </div>
+
+</header>
+
+<nav class="navbar">
+
+    <a href="/dashboard">Dashboard</a>
+
+    <a href="/member_registration">Members</a>
+
+    <a href="/donation"class="active">Donations</a>
+
+    <a href="/expense">Expenses</a>
+
+    <a href="/salary">Salary</a>
+
+    <a href="/cash_register">Cash Register</a>
+
+    <a href="/reports">Reports</a>
+
+</nav>
+
+<div class="page-container">
+
+    <!-- Donation Form -->
+
+    <div class="form-card">
+
+        <h1>Donation Entry</h1>
+
+        <input
+            type="text"
+            id="donor_name"
+            placeholder="Donor Name"
+        >
+
+        <input
+            type="text"
+            id="donor_phone"
+            placeholder="Phone Number"
+        >
+
+        <select id="donation_type">
+
+            <option>General Donation</option>
+            <option>Friday Collection</option>
+            <option>Zakat</option>
+            <option>Sadaqah</option>
+            <option>Building Fund</option>
+            <option>Ramadan Fund</option>
+            <option>Charity Fund</option>
+
+        </select>
+
+        <input
+            type="number"
+            id="donation_amount"
+            placeholder="Donation Amount"
+        >
+
+        <input
+            type="text"
+            id="payment_method"
+            placeholder="Cash / UPI / Bank"
+        >
+
+        <input
+            type="text"
+            id="remarks"
+            placeholder="Remarks"
+        >
+
+        <input
+            type="text"
+            id="received_by"
+            placeholder="Received By"
+        >
+
+        <button
+            id="saveButton"
+            onclick="saveDonation()">
+
+            Save Donation
+
+        </button>
+
+    </div>
+
+
+    <!-- Search -->
+
+    <div class="search-card">
+
+        <h2>Search Donation</h2>
+
+        <input
+            type="text"
+            id="searchDonation"
+            placeholder="Donation No or Donor Name"
+        >
+
+        <button onclick="searchDonation()">
+
+            Search
+
+        </button>
+
+        <button onclick="loadDonations()">
+
+            Show All
+
+        </button>
+
+    </div>
+
+
+    <!-- Donation Table -->
+
+    <div class="table-card">
+
+        <h2>Donation List</h2>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Donation No</th>
+                    <th>Donor Name</th>
+                    <th>Phone</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Payment</th>
+                    <th>Date</th>
+                    <th>Received By</th>
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="donationTable">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script src="/web/donation.js"></script>
+
+</body>
+
+</html>
